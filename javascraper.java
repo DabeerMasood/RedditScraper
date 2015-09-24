@@ -6,7 +6,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.apache.commons.io.FileUtils;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -40,14 +39,18 @@ public class javascraper{
 public static void main (String[]args) throws MalformedURLException
 {
 	Scanner scan = new Scanner (System.in);
-	System.out.println("Where do you want to store the files?")
+	System.out.println("Where do you want to store the files?");
 	String folderpath = scan.next();
+	System.out.println("What subreddit do you want to scrape?");
+	String subreddit = scan.next();
+	subreddit = ("http://reddit.com/r/" + subreddit);
+	new File(folderpath + "/" + subreddit).mkdir();
 	
 //test
 
 try{
     //gets http protocol
-Document doc = Jsoup.connect("http://reddit.com/r/pics").timeout(0).get();
+Document doc = Jsoup.connect(subreddit).timeout(0).get();
 
 //get page title
 String title = doc.title();
