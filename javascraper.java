@@ -40,7 +40,7 @@ public class javascraper{
     private static final String folderpath = "c://users//dabee_000//documents//reddit";
 public static void main (String[]args) throws MalformedURLException
 {
-
+//test
 
 try{
     //gets http protocol
