@@ -37,9 +37,12 @@ import java.util.Scanner;
 
 public class javascraper{
 
-    private static final String folderpath = "c://users//dabee_000//documents//reddit";
 public static void main (String[]args) throws MalformedURLException
 {
+	Scanner scan = new Scanner (System.in);
+	System.out.println("Where do you want to store the files?")
+	String folderpath = scan.next();
+	
 //test
 
 try{
@@ -60,7 +63,7 @@ String checkLink = link.attr("href");
 Elements images = doc.select("img[src~=(?i)\\.(png|jpe?g|gif)]");
 if (imgCheck(checkLink)){ // checks to see if img link j
     System.out.println("link : " + link.attr("href"));
-downloadImages(checkLink);
+downloadImages(checkLink, folderpath);
 
 
 
@@ -99,7 +102,7 @@ return false;
 
 
 
-private static void downloadImages(String src) throws IOException{
+private static void downloadImages(String src, String folderpath) throws IOException{
 String folder = null;
 
         //Exctract the name of the image from the src attribute
